@@ -8,7 +8,7 @@ public class User {
     public User(String name, Long id) {
         this.name = name;
         this.id = id;
-        this.totalScore = 100;
+        this.totalScore = 0;
     }
 
     public User(String name) {
@@ -34,6 +34,11 @@ public class User {
     // 2) Throw a Runtime Exception with an appropriate message for invalid score.
 
     public void modifyScore(Integer score){
+        if (score < 0) {
+            throw new RuntimeException("score cannot be less than 0");
+        }
+        this.totalScore += score;
+
     }
 
     @Override
